@@ -7,18 +7,55 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image} from 'react-native';
+import ImageElement from './components/imageElement.js';
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  state = {
+    modalVisible: false,
+    modalImage: require('./components/images/shaka_1.jpg'),
+    images: [
+      require('./components/images/shaka_1.jpg'),
+      require('./components/images/shaka_2.jpg'),
+      require('./components/images/shaka_3.jpg'),
+      require('./components/images/shaka_4.jpg'),
+      require('./components/images/shaka_5.jpg'),
+      require('./components/images/shaka_6.jpg'),
+      require('./components/images/shaka_7.jpg'),
+      require('./components/images/shaka_8.jpg'),
+      require('./components/images/shaka_9.jpg'),
+      require('./components/images/shaka_10.jpg'),
+      require('./components/images/shaka_11.jpg'),
+      require('./components/images/shaka_12.jpg'),
+    ]
+  }
+
+  modalToggle(visible, imageKey) {
+    this.setState({
+      modalImage: this.state.images[imageKey]
+    })
+    this.setState({
+      modalVisible: true
+    })
+  }
+
+  getImage() {
+    return this.state.modalImage;
+  }
+
+
+
   render() {
+    let images = this.state.images.map((val, key) => {
+      return <Image key={key} onPress={() => this.modalToggle(true, key)}>
+      <View style={styles.imagewrap}>
+        <ImageElement imgsource={val}></ImageElement>
+      </View>
+      </Image>
+      
+    })
     return (
       <View style={styles.container}>
       <Text style={styles.title}>Shakarez Image Generator</Text>
