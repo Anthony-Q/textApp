@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, TouchableHighlight} from 'react-native';
 import ImageElement from './components/imageElement.js';
 
 type Props = {};
@@ -15,9 +15,9 @@ export default class App extends Component<Props> {
 
   state = {
     modalVisible: false,
-    modalImage: require('./components/images/shaka_1.jpg'),
+    modalImage: require('./components/images/shaka_30.jpg'),
     images: [
-      require('./components/images/shaka_1.jpg'),
+      require('./components/images/shaka_30.jpg'),
       require('./components/images/shaka_2.jpg'),
       require('./components/images/shaka_3.jpg'),
       require('./components/images/shaka_4.jpg'),
@@ -49,18 +49,16 @@ export default class App extends Component<Props> {
 
   render() {
     let images = this.state.images.map((val, key) => {
-      return <Image key={key} onPress={() => this.modalToggle(true, key)}>
+      return <TouchableHighlight key={key} onPress={() => this.modalToggle(true, key)}>
       <View style={styles.imagewrap}>
         <ImageElement imgsource={val}></ImageElement>
       </View>
-      </Image>
-      
+      </TouchableHighlight>
+
     })
     return (
       <View style={styles.container}>
-      <Text style={styles.title}>Shakarez Image Generator</Text>
-        <Button title="Generate New Shaka"/>
-        <Button title="Save" />
+        {images}
       </View>
     );
   }
@@ -68,12 +66,17 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    textAlign: 'center',
-    fontFamily: 'Helvetica',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    backgroundColor: '#eee',
+  },
+  imagewrap: {
+    margin: 2,
+    padding: 2,
+    height: 200,
+    width: 100,
+    backgroundColor: '#fff'
   },
   title: {
     fontSize: 50,
