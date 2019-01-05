@@ -11,55 +11,44 @@ import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, Touc
 import ImageElement from './components/imageElement.js';
 
 type Props = {};
-export default class App extends Component<Props> {
+
+const images = [
+  require('./components/images/shaka_30.jpg'),
+  require('./components/images/shaka_2.jpg'),
+  require('./components/images/shaka_3.jpg'),
+  require('./components/images/shaka_4.jpg'),
+  require('./components/images/shaka_5.jpg'),
+  require('./components/images/shaka_6.jpg'),
+  require('./components/images/shaka_7.jpg'),
+  require('./components/images/shaka_8.jpg'),
+  require('./components/images/shaka_9.jpg'),
+  require('./components/images/shaka_10.jpg'),
+  require('./components/images/shaka_11.jpg'),
+  require('./components/images/shaka_12.jpg'),
+];
+
+export default class App extends Component {
 
   state = {
-    modalVisible: false,
-    modalImage: require('./components/images/shaka_30.jpg'),
-    images: [
-      require('./components/images/shaka_30.jpg'),
-      require('./components/images/shaka_2.jpg'),
-      require('./components/images/shaka_3.jpg'),
-      require('./components/images/shaka_4.jpg'),
-      require('./components/images/shaka_5.jpg'),
-      require('./components/images/shaka_6.jpg'),
-      require('./components/images/shaka_7.jpg'),
-      require('./components/images/shaka_8.jpg'),
-      require('./components/images/shaka_9.jpg'),
-      require('./components/images/shaka_10.jpg'),
-      require('./components/images/shaka_11.jpg'),
-      require('./components/images/shaka_12.jpg'),
-    ]
+    activeImageIndex: null,
   }
 
-  modalToggle(visible, imageKey) {
-    this.setState({
-      modalImage: this.state.images[imageKey]
-    })
-    this.setState({
-      modalVisible: true
-    })
+  newImage = () =>{
+      this.setState({
+        activeImageIndex: Math.floor(Math.random() * images.length)
+      })
   }
-
-  getImage() {
-    return this.state.modalImage;
-  }
-
-
 
   render() {
-    let images = this.state.images.map((val, key) => {
-      return <TouchableHighlight key={key} onPress={() => this.modalToggle(true, key)}>
-      <View style={styles.imagewrap}>
-        <ImageElement imgsource={val}></ImageElement>
-      </View>
-      </TouchableHighlight>
-
-    })
+    const activeImage = images[this.state.activeImageIndex];
     return (
-      <View style={styles.container}>
-        {images}
+      <View>
+      <Text style={styles.title}>Shakarez Image Generator</Text>
+       <Button title="new shaka" style={styles.button}
+       onPress= {this.newImage}/>
+       <Image source={activeImage} />
       </View>
+
     );
   }
 }
@@ -79,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
-    fontSize: 50,
+    fontSize: 80,
     alignItems: 'center',
     color: 'black',
     justifyContent: 'center',
