@@ -12,7 +12,7 @@ export default class BottomButtons extends Component {
             </View>
 
             <View style={styles.buttonContainer}>
-              <Button title="save" />
+              <Button title="save" onPress={this.props.newImage}/>
             </View>
 
           </View>

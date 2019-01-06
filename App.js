@@ -73,9 +73,8 @@ export default class App extends Component {
             <Image source={activeImage} style={styles.images} />
           </ScrollView>
 
-          <BottomButtons />
+          <BottomButtons newImage={this.newImage.bind(this)}/>
         </View>
-        
       )
     } else {
       return (
@@ -88,7 +87,7 @@ export default class App extends Component {
             </Text>
           </ScrollView>
 
-         <BottomButtons />
+         <BottomButtons newImage={this.newImage.bind(this)}/>
 
         </View>
       );
