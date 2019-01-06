@@ -101,12 +101,12 @@ const styles = StyleSheet.create({
     color: 'black',
     justifyContent: 'center',
     fontFamily: 'monospace',
-    fontWeight: 'bold',
   },
   images: {
-    height: 600,
-    width: 500,
-    alignSelf: 'stretch',
+    flex: 1,
+    height: null,
+    width: null,
+    resizeMode: 'contain',
   },
   container: {
     flex: 1,
