@@ -20,8 +20,6 @@ export default class BottomButtons extends Component {
   }
 }
 
-
-
 const styles = StyleSheet.create({
     container: {
         bottom: 0,

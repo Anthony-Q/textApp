@@ -1,18 +1,27 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, ScrollView, Image} from 'react-native';
+import images from '../App.js';
 
-export default class App extends Component {
+
+export default class ImageElement extends Component {
   render() {
-    return (
-        <Image source={this.props.imgsource} style={styles.image} />
-    );
+    const activeImage = images[this.state.activeImageIndex];
+      return (
+          <ScrollView contentContainerStyle={styles.container}>
+            <Image source={this.props.activeImage} style={styles.images} />
+          </ScrollView>
+      )
   }
 }
 
 const styles = StyleSheet.create({
-  image: {
+    images: {
       flex: 1,
+      height: null,
       width: null,
-      alignSelf: 'stretch',
-  }
-});
+      resizeMode: 'contain',
+    },
+    container: {
+      flex: 1,
+    },
+  });

@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, ScrollView } from 'react-native';
 import BottomButtons from './components/buttons.js';
+import ImageElement from './components/imageElement.js';
+import Title from './components/title.js';
 var { width, height } = Dimensions.get('window')
 type Props = {};
 
@@ -78,16 +80,8 @@ export default class App extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.title}>Shakarez{"\n"}Image{"\n"}Generator{"\n"}</Text>
-            <Text>The largest and most exclusive collection of Shakarez images on the internet.</Text>
-            <Text>Come collect your favorite images and relive the most magical moments of this fan-favorite
-              Brazilian content creator.
-            </Text>
-          </ScrollView>
-
+        <Title />
          <BottomButtons newImage={this.newImage.bind(this)}/>
-
         </View>
       );
     }
