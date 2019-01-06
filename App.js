@@ -52,7 +52,6 @@ const images = [
 ];
 
 export default class App extends Component {
-
   state = {
     activeImageIndex: null,
   }
@@ -97,28 +96,19 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 80,
+    fontSize: 70,
     alignItems: 'center',
     color: 'black',
     justifyContent: 'center',
     fontFamily: 'monospace',
+    fontWeight: 'bold',
   },
   images: {
     height: 600,
     width: 500,
-    resizeMode: 'contain',
     alignSelf: 'stretch',
-  },
-  footer: {
-    width: "100%",
-    position: 'absolute',
-    bottom: 0,
   },
   container: {
     flex: 1,
-
   },
-  button: {
-    alignSelf: "stretch",
-  }
 });

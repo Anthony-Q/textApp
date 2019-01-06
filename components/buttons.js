@@ -8,11 +8,11 @@ export default class BottomButtons extends Component {
           <View style={styles.container}>
 
             <View style={styles.buttonContainer}>
-              <Button title="new shaka" />
+              <Button title="new shaka" onPress={this.props.newImage}/>
             </View>
 
             <View style={styles.buttonContainer}>
-              <Button title="save" onPress={this.props.newImage}/>
+              <Button title="save"/>
             </View>
 
           </View>
