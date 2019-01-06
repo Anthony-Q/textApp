@@ -7,13 +7,13 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, ScrollView} from 'react-native';
 import ImageElement from './components/imageElement.js';
 
 type Props = {};
 
 const images = [
-  require('./components/images/shaka_30.jpg'),
+  require('./components/images/shaka_1.jpg'),
   require('./components/images/shaka_2.jpg'),
   require('./components/images/shaka_3.jpg'),
   require('./components/images/shaka_4.jpg'),
@@ -25,6 +25,30 @@ const images = [
   require('./components/images/shaka_10.jpg'),
   require('./components/images/shaka_11.jpg'),
   require('./components/images/shaka_12.jpg'),
+  require('./components/images/shaka_13.jpg'),
+  require('./components/images/shaka_14.jpg'),
+  require('./components/images/shaka_15.jpg'),
+  require('./components/images/shaka_16.jpg'),
+  require('./components/images/shaka_17.jpg'),
+  require('./components/images/shaka_18.jpg'),
+  require('./components/images/shaka_19.jpg'),
+  require('./components/images/shaka_20.jpg'),
+  require('./components/images/shaka_21.jpg'),
+  require('./components/images/shaka_22.jpg'),
+  require('./components/images/shaka_23.jpg'),
+  require('./components/images/shaka_24.jpg'),
+  require('./components/images/shaka_25.jpg'),
+  require('./components/images/shaka_26.jpg'),
+  require('./components/images/shaka_27.jpg'),
+  require('./components/images/shaka_28.jpg'),
+  require('./components/images/shaka_29.jpg'),
+  require('./components/images/shaka_30.jpg'),
+  require('./components/images/shaka_31.jpg'),
+  require('./components/images/shaka_32.jpg'),
+  require('./components/images/shaka_33.jpg'),
+  require('./components/images/shaka_34.jpg'),
+  require('./components/images/shaka_35.jpg'),
+  require('./components/images/shaka_36.jpg'),
 ];
 
 export default class App extends Component {
@@ -41,15 +65,37 @@ export default class App extends Component {
 
   render() {
     const activeImage = images[this.state.activeImageIndex];
+
+    if (this.state.activeImageIndex !== null) {
+      return(
+        <View>
+          <ScrollView>
+          <Image source={activeImage} style={styles.images}/>
+          </ScrollView>
+
+          <View style={styles.footer}>
+          <Button title="new shaka" style={styles.button}
+       onPress= {this.newImage}/>
+       <Button title="save" style={styles.button} />
+
+          </View>
+        </View>
+      )
+    } else {
     return (
       <View>
-      <Text style={styles.title}>Shakarez Image Generator</Text>
-       <Button title="new shaka" style={styles.button}
+        <ScrollView>
+        <Text style={styles.title}>Shakarez Image Generator</Text>
+        </ScrollView>
+        
+        <View style={styles.footer}>
+        <Button title="new shaka" style={styles.button}
        onPress= {this.newImage}/>
-       <Image source={activeImage} />
+       <Button title="save" style={styles.button} />
+        </View>
       </View>
-
-    );
+      );
+    }
   }
 }
 
@@ -72,6 +118,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: 'black',
     justifyContent: 'center',
-    fontFamily: 'Helvetica',
-  }
+    fontFamily: 'sans-serif-condensed',
+  },
+  images: {
+    height: 600,
+    width: 450,
+   resizeMode: 'stretch',
+  },
+  footer: {
+    position: 'absolute',
+    height: 40,
+    bottom: 0,
+ }
 });
