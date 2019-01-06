@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, ScrollView} from 'react-native';
 import ImageElement from './components/imageElement.js';
-
+var {width, height} = Dimensions.get('window')
 type Props = {};
 
 const images = [
@@ -68,8 +68,8 @@ export default class App extends Component {
 
     if (this.state.activeImageIndex !== null) {
       return(
-        <View>
-          <ScrollView>
+        <View style={styles.container}>
+          <ScrollView style={styles.container}>
           <Image source={activeImage} style={styles.images}/>
           </ScrollView>
 
@@ -83,8 +83,8 @@ export default class App extends Component {
       )
     } else {
     return (
-      <View>
-        <ScrollView>
+      <View style={styles.container}>
+        <ScrollView style = {styles.container}>
         <Text style={styles.title}>Shakarez Image Generator</Text>
         </ScrollView>
         
@@ -100,19 +100,6 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: '#eee',
-  },
-  imagewrap: {
-    margin: 2,
-    padding: 2,
-    height: 200,
-    width: 100,
-    backgroundColor: '#fff'
-  },
   title: {
     fontSize: 80,
     alignItems: 'center',
@@ -122,12 +109,20 @@ const styles = StyleSheet.create({
   },
   images: {
     height: 600,
-    width: 450,
-   resizeMode: 'stretch',
+    width: 500,
+   resizeMode: 'contain',
+   alignSelf: 'stretch',
   },
   footer: {
+    flexDirection: 'row',
+    width: width,
+    justifyContent: 'center',
     position: 'absolute',
     height: 40,
     bottom: 0,
+ },
+ container: {
+  flex: 1,
+
  }
 });
