@@ -9,10 +9,12 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button, Modal, Dimensions, Image, ScrollView } from 'react-native';
 import BottomButtons from './components/buttons.js';
-import ImageElement from './components/imageElement.js';
 import Title from './components/title.js';
+
 var { width, height } = Dimensions.get('window')
 type Props = {};
+
+const portugal = require('./components/images/portugal.png');
 
 const images = [
   require('./components/images/shaka_1.jpg'),
@@ -66,14 +68,12 @@ export default class App extends Component {
 
   render() {
     const activeImage = images[this.state.activeImageIndex];
-
     if (this.state.activeImageIndex !== null) {
       return (
         <View style={styles.container}>
           <ScrollView contentContainerStyle={styles.container}>
             <Image source={activeImage} style={styles.images} />
           </ScrollView>
-
           <BottomButtons newImage={this.newImage.bind(this)}/>
         </View>
       )
@@ -104,5 +104,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: '#9C75F4',
   },
 });
